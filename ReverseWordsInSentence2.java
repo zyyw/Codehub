@@ -13,7 +13,7 @@ public class ReverseWordsInSentence2 {
 
 	public String reverseWords(String input) {
 		// input sanity check
-		if (input == null || input.size() == 0) {
+		if (input == null || input.length() == 0) {
 			return input;
 		}
 		char[] array = input.toCharArray();

@@ -2,7 +2,7 @@
  *
  */
 
-public class ReverseWordsInSentence {
+public class ReverseWordsInSentence1 {
 	public char[] reverseWords(char[] array) {
 		if (array == null || array.length <= 1) {
 			return array;
