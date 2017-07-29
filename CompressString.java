@@ -18,7 +18,7 @@ public class CompressString {
 		// input sanity check
 		if (input == null) {
 			return null;
-		} else if (input.size() <= 1) {
+		} else if (input.length() <= 1) {
 			return new String(input);
 		}
 
