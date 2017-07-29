@@ -10,20 +10,20 @@ public class NumberOfWords {
 
 	public int numberOfWords(String input) {
 		// input sanity check
-		if (input == null || input.size() == 0) {
+		if (input == null || input.length() == 0) {
 			return 0;
 		}
 		int wordCount = 0;
 		int end = 0;
-		while (end < input.size()) {
+		while (end < input.length()) {
 			// skipping leading space of any word
-			while (end < input.size() && Character.isWhitespace(input.charAt(end))) {
+			while (end < input.length() && Character.isWhitespace(input.charAt(end))) {
 				++end;
 			}
-			if (end == input.size()) {
+			if (end == input.length()) {
 				break;
 			}
-			while (end < input.size() && !Character.isWhitespace(input.charAt(end))) {
+			while (end < input.length() && !Character.isWhitespace(input.charAt(end))) {
 				++end;
 			}
 			++wordCount;
