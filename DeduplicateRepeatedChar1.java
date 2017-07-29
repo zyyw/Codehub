@@ -8,7 +8,7 @@ public class DeduplicateRepeatedChar1 {
 
 	public String deduplicateChar(String input) {
 		// input sanity check
-		if (input == null || input.size() == 0) {
+		if (input == null || input.length() == 0) {
 			return "";
 		}
 		char[] array = input.toCharArray();

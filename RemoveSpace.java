@@ -8,7 +8,7 @@ public class RemoveSpace {
 
 	public String removeSpaces(String input) {
 		// input sanity check
-		if (input == null || input.size() == 0) {
+		if (input == null || input.length() == 0) {
 			return "";
 		}
 		char[] array = input.toCharArray();
