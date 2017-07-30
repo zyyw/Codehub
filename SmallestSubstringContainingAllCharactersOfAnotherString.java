@@ -9,7 +9,7 @@
  *
  */
 
-public class MinimumWindowSubstring {
+public class SmallestSubstringContainingAllCharactersOfAnotherString {
     public String minWindow(String source, String target) {
         if (source == null || source.length() == 0 || target == null || target.length() == 0) {
             return "";
