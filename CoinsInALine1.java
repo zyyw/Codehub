@@ -2,9 +2,10 @@
  * Problem statement:
  * There are n coins in a line. Two players take turns to take one or two from the right side until there are no more coins left.
  * The player who takes the last coin wins.
+ * Determine if the first player will win or lose.
  *  -> 单次取 1 个或者 2 个
  *  -> 每次都从右边取
- * Determine if the first player will win or lose.
+ *  -> 拿到最后一个硬币的获胜
  *
  * Idea:
  * 1. state
