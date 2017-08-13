@@ -7,9 +7,10 @@
  *
  * TreeNodeKary {
  *   int val;
- *   TreeNodeKary[] children;
+ *   List<TreeNodeKary> children;
  *   TreeNodeKary(int v) {
  *     this.val = v;
+ *     child = new ArrayList<>();
  *   }
  * }
  *
