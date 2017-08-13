@@ -4,6 +4,10 @@
  * The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
  * [ LC-543 ]
  *
+ * Follow-up:
+ * 如果是 k 叉树呢？
+ * 1. int[] num = int[2] 求 max and 2nd max
+ * 2. sum(num[i])
  */
 
 public class DiameterOfBinaryTree {
