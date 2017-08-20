@@ -48,8 +48,8 @@
  */
 public class CourseSchedule1 {
 	public boolean canFinish(int numCourses, int[][] prerequisites) {
-		if (prerequisites == null || prerequisites.length == 0 || prerequisites[0] == null || prerequisites[0].length == 0) {
-			return true;
+		if (numCourses <= 0 || prerequisites == null) {
+			return false;
 		}
 		List<List<Integer>> outList = new ArrayList<>();
 		for (int i = 0; i < numCourses; ++i) {
