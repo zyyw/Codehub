@@ -27,6 +27,6 @@ public class FirstPositionOfTarget {
 		if (nums[start] == target) {
 			return start;
 		}
-		return start < end && nums[end] == target ? end : -1;
+		return nums[end] == target ? end : -1;
 	}
 }
