@@ -12,21 +12,33 @@ public class PathSumToTarget3 {
 		set.add(0);
 		return pathSumHelper(root, sum, 0, set);
 	}
-	
+
 	private boolean pathSumHelper(TreeNode root, int target, int prefixSum, Set<Integer> set) {
 		if (root == null) {
 			return false;
 		}
+		// current node processing
 		prefixSum += root.val;
 		if (set.contains(prefixSum - target)) {
 			return true;
 		}
-		int sz = set.size();
+		int setSize = set.size();
 		set.add(prefixSum);
-		if (pathSumHelper(root.left, target, prefixSum, set) || pathSumHelper(root.right, target, prefixSum, set)) {
+		// go to each child node
+		boolean retLeft = pathSumHelper(root.left, target, prefixSum, set);
+		boolean retRight = pathSumHelper(root.right, target, prefixSum, set);
+		if (retLeft || retRight) {
 			return true;
 		}
-		if (sz != set.size()) {
+		// 如果是 k-nary tree
+		// for (TreeNodeKary child : root.children) {
+		//	 boolean exist = pathSumHelper(child, target, prefixSum, set);
+		//   if (exist) {
+		//		 return true;
+		// 	 }
+		// }
+		// backtracking
+		if (setSize < set.size()) {
 			// size is incremented, which means prefixSum was not in set before adding it into it
 			set.remove(prefixSum);
 		}

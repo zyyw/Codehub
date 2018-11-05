@@ -1,7 +1,7 @@
 /**
  * Problem statement:
  * Given a binary tree, find the maximum path sum ending at a leaf node.
- * The path may start at the root-2-leaf(ending leaf node) path.
+ * The path may start at any node along the root-2-leaf path.
  * 讲人话：在所有直上直下的 path 中，找到一条(起始点不限，终点在 leaf node) 的 path 使得 path sum 最大。
  *
  * Assumption:
@@ -26,7 +26,7 @@ public class MaximumPathSum4 {
 		}
 		if (root.left == null && root.right == null) {
 			return root.val;
-		} 
+		}
 		// 2. recursion rule
 		sum = sum + root.val > 0 ? sum + root.val : 0;
 		if (root.left == null) {

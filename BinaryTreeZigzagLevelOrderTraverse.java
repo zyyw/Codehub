@@ -38,25 +38,26 @@ public class BinaryTreeZigzagLevelOrderTraverse {
 			return ret;
 		}
 		Deque<TreeNode> deque = new ArrayDeque<>();
-		deque.offerFirst(root);
+		deque.offerFirst(root);  // 定义 offerFirst 为左进
 		boolean curOddLevel = true;
 		while (!deque.isEmpty()) {
 			int sz = deque.size();
 			List<Integer> level = new ArrayList<>();
 			TreeNode cur = null;
 			for (int i = 0; i < sz; ++i) {
+				// deque.poll.. 左出？右出？
 				if (curOddLevel) {
-					cur = deque.pollFirst();
+					cur = deque.pollFirst();   // 左出
 					if (cur.left != null) {
-						deque.offerLast(cur.left);
+						deque.offerLast(cur.left); // 右进，左之左
 					}
 					if (cur.right != null) {
 						deque.offerLast(cur.right);
 					}
 				} else {
-					cur = deque.pollLast();
+					cur = deque.pollLast();   // 右出
 					if (cur.right != null) {
-						deque.offerFirst(cur.right);
+						deque.offerFirst(cur.right);  // 左进，右之右
 					}
 					if (cur.left != null) {
 						deque.offerFirst(cur.left);

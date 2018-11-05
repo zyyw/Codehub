@@ -2,6 +2,15 @@
  * Problem statement:
  * Given n x m non-negative integers representing an elevation map 2d where the area of each cell is 1 x 1, compute how much water it is able to trap after raining.
  *
+ * note:
+ * 四个角上的点似乎要放到初始化里去
+ * 反例：
+ *  1  3  1
+ *  4  2  5
+ *  1  6  1
+ * 如果不放四个角上的点，点 1 回被算到 water 里去 (3 - 1)
+ * expect: 1
+ * actual: 12 (如果不放四个角上的点)
  */
 
 public class MaxWaterTrapped2 {
@@ -16,7 +25,7 @@ public class MaxWaterTrapped2 {
 		}
 		@Override
 		public int compareTo(Cell cell) {
-			return this.val < this.val ? -1 : 1; // minHeap
+			return this.val < cell.val ? -1 : 1; // minHeap
 		}
 	}
 
@@ -37,7 +46,7 @@ public class MaxWaterTrapped2 {
 			pq.offer(new Cell(i, n - 1, heights[i][n - 1]));
 			visited[i][n - 1] = true;
 		}
-		for (int j = 1; j < n - 1; ++j) {
+		for (int j = 0; j < n; ++j) {
 			// first row
 			pq.offer(new Cell(0, j, heights[0][j]));
 			visited[0][j] = true;

@@ -17,11 +17,11 @@ public class GetKeysInBinarySearchTreeInGivenRange {
 		if (root == null) {
 			return;
 		}
-		if (min < root.key) {
-			getRangeHelper(root.left, min, max, ret);
-		}
 		if (min <= root.key && root.key <= max) {
 			ret.add(root.key);
+		}
+		if (min < root.key) {
+			getRangeHelper(root.left, min, max, ret);
 		}
 		if (root.key < max) {
 			getRangeHelper(root.right, min, max, ret);

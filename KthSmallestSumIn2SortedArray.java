@@ -1,7 +1,7 @@
 /**
  * Problem statement:
  * Given two sorted arrays A and B, of sizes m and n respectively.
- * Define s = a + b, where a is one element from A and b is one element from B. 
+ * Define s = a + b, where a is one element from A and b is one element from B.
  * Find the Kth smallest s out of all possible s'.
  *
  * Assumption:
@@ -9,8 +9,8 @@
  * 2. K > 0 and K <= m * n
  */
 
-public class KthSmallestIn2SortedArray {
-	static class Cell implements<Cell> {
+public class KthSmallestSumIn2SortedArray {
+	static class Cell implements Comparable<Cell> {
 		int x;
 		int y;
 		int val;

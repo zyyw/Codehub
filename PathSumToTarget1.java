@@ -27,4 +27,25 @@ public class PathSumToTarget1 {
 		// now root has both left child and right child
 		return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
 	}
+
+	// 似乎上面的 code 可以优化成下面的
+	public boolean hasPathSum2(TreeNode root, int sum) {
+		if (root == null) {
+			return false;
+		}
+		if (root.left == null && root.right == null) {
+			// 叶子节点
+			return root.val == sum;
+		}
+		// go to each child node
+		return hasPathSum2(root.left, sum - root.val) || hasPathSum2(root.right, sum - root.val);
+		// 如果是 k-nary tree
+		// for (TreeNodeKary child : root.children) {
+		//   boolean exist = hasPathSum2(child, sum - root.val);
+		// 	 if (exist) {
+		//   	 return true;
+		//   }
+		// }
+		// return false;
+	}
 }

@@ -1,6 +1,6 @@
 /**
  * Problem statement:
- * 给定一棵 k 叉树，和 树中 k 个节点。求这两个节点的最小公共祖先
+ * 给定一棵 k 叉树，和 树中 k 个节点。求这K个节点的最小公共祖先
  * Assumption:
  * 1. 这 k 个节点一定在树里
  * 2. 树没有 parent 指针
@@ -22,7 +22,7 @@ public class LowestCommonAncestorK2 {
 	}
 
 	private TreeNodeKary lowestCommonAncestorHelper(TreeNodeKary root, Set<TreeNodeKary> set) {
-		if (root == null || set.contains(set)) {
+		if (root == null || set.contains(root)) {
 			return root;
 		}
 		int cnt = 0;
@@ -34,7 +34,7 @@ public class LowestCommonAncestorK2 {
 				++cnt;
 				ret = cur;
 			}
-			if (cnt == 2) {
+			if (cnt == set.size()) {
 				return root;
 			}
 		}

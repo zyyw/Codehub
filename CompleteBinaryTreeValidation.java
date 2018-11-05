@@ -3,7 +3,7 @@
  * validate if a binary tree is a complete binary tree or not
  *
  * Idea:
- * if a node doesn't not have child node, any subsequent node (level order traversal) can NOT have child either since then. 
+ * if a node doesn't not have child node, any subsequent node (level order traversal) can NOT have child either since then.
  */
 
 public class CompleteBinaryTreeValidation {
@@ -13,25 +13,25 @@ public class CompleteBinaryTreeValidation {
 		}
 		Queue<TreeNode> queue = new ArrayDeque<>();
 		queue.offer(root);
-		boolean flag = false;
+		boolean hasNullChild = false; // a flag to determine if there is a null child ahead at the same level
 		TreeNode cur = null;
 		while (!queue.isEmpty()) {
 			cur = queue.poll();
 			if (cur.left != null) {
 				queue.offer(cur.left);
-				if (flag) {
+				if (hasNullChild) {
 					return false;
 				}
 			} else {
-				flag = true;
+				hasNullChild = true;
 			}
 			if (cur.right != null) {
 				queue.offer(cur.right);
-				if (flag) {
+				if (hasNullChild) {
 					return false;
 				}
 			} else {
-				flag = true;
+				hasNullChild = true;
 			}
 		}
 		return true;

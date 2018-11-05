@@ -1,7 +1,7 @@
 /**
  * Give an positive integer, print all valid block.
  * Example:
- * n = 2 
+ * n = 3 
  * output:
  * if {
  *   if {
