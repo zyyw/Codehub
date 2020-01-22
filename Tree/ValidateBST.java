@@ -36,4 +36,28 @@ public class ValidateBST {
 		}
 		return isValidBSTHelper(root.left, minNode, root) && isValidBSTHelper(root.right, root, maxNode);
 	}
+
+	// 解法二：
+	// 利用 BST 中序遍历是一个递增的有序数列
+	public boolean isValidBST2(TreeNode root) {
+		if (root == null) {
+			return true;
+		}
+		TreeNode prev = null;
+		Deque<TreeNode> stk = ArrayDeque<>();
+		while (root != null || stk.isEmpty()) {
+			if (root != null) {
+				stk.offerFirst(root);
+				root = root.left;
+			} else {
+				root = stk.pollFirst();
+				if (prev != null && prev.val >= root.val) {
+					return false;
+				}
+				prev = root;
+				root = root.right;
+			}
+		}
+		return true;
+	}
 }
