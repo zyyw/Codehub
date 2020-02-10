@@ -12,13 +12,13 @@ public class BinaryTreePostOrderTraversal {
 				stk.offerFirst(root);
 				root = root.left;
 			} else {
-				root = stk.peekFirst();
+				root = stk.peekFirst(); // 这里是 peerFirst() 不是 pollFirst()
 				if (root.right != null && root.right != prev) {
 					// right child of the current root has NOT been visited yet; go to its right child
 					root = root.right;
 				} else {
-					// well, now both left and right children are visited; 
-					// then: 1. visited the root  2. reset prev = root  3. reset root = null
+					// well, now both left and right children are visited;
+					// then: 1. visited the root  2. set prev = root  3. set root = null
 					root = stk.pollFirst(); // poll out the root from the stack buffer
 					ret.add(root.val);
 					prev = root;
@@ -27,5 +27,5 @@ public class BinaryTreePostOrderTraversal {
 			}
 		}
 		return ret;
-	}	
+	}
 }

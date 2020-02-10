@@ -41,24 +41,20 @@ public class BinaryTreRightSideView {
   // 解法二： DFS
   public List<Integer> rightSideView(TreeNode root) {
     List<Integer> ret = new ArrayList<>();
-    if (root == null) {
-      return ret;
-    }
     int[] maxDepth = {0};
     rightSideViewHelper(root, 1, maxDepth, ret);
     return ret;
   }
 
   public void rightSideViewHelper(TreeNode root, int depth, int[] maxDepth, List<Integer> ret) {
+    if (root == null) {
+      return;
+    }
     if (depth > maxDepth[0]) {
       ret.add(root.val);
       maxDepth[0] = depth;
     }
-    if (root.right != null) {
-      rightSideViewHelper(root.right, 1 + depth, maxDepth, ret);
-    }
-    if (root.left != null) {
-      rightSideViewHelper(root.left, 1 + depth, maxDepth, ret);
-    }
+    rightSideViewHelper(root.right, 1 + depth, maxDepth, ret);
+    rightSideViewHelper(root.left, 1 + depth, maxDepth, ret);
   }
 }
