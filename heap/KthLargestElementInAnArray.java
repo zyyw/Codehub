@@ -39,4 +39,40 @@ public class KthLargestElementInAnArray {
   }
 
   // 方法二：用快排 partition 来做
+  public int findKthLargest2(int[] nums, int k) {
+    // input sanity check
+    // skipping... assuming all inputs are valid
+    int start = 0;
+    int end = nums.length - 1;
+    while (start < end) {
+      int mi = partition(nums, start, end);
+      if (mi < k - 1) {
+        start = mi + 1;
+      } else if (mi > k - 1) {
+        end = mi - 1;
+      } else {
+        break;
+      }
+    }
+    return nums[k - 1];
+  }
+
+  private int partition(int[] nums, int start, int end) {
+    int pivot = nums[start];
+    int mi = start;
+    for (int i = start + 1; i <= end; ++i) {
+      if (nums[i] > pivot) {
+        mi++;
+        swap(nums, mi, i);
+      }
+    }
+    swap(nums, start, mi);
+    return mi;
+  }
+
+  private void swap(int[] nums, int i, int j) {
+    int temp = nums[i];
+    nums[i] = nums[j];
+    nums[j] = temp;
+  }
 }
