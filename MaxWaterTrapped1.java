@@ -7,8 +7,8 @@
  *     |
  *     |
  *     |
- *     |					 __
- *     |		 __			|  |__    __
+ *     |					           __
+ *     |		 		 __			    |  |__    __
  *     |   __   |  |__	  __|  |  |__|  |__
  *     |__|__|__|__|__|__|__|__|__|__|__|__|________>
  *      0  1  0  2  1  0  1  3  2  1  2  1
@@ -17,7 +17,7 @@
  * Idea:
  * General idea:
  * for each point, get the max height on its left, and max height on its right.
- * so total water = water + Math.min(left[i], right[i]) - height[i] ), if Math.min(left[i], right[i]) > heights[i]; 
+ * so total water = water + Math.min(left[i], right[i]) - height[i] ), if Math.min(left[i], right[i]) > heights[i];
  *    total water = water + 0, if Math.min(left[i], right[i]) <= heights[i]
  *    where 0 < i < heights.length - 1
  *
@@ -33,28 +33,37 @@
 
 public class MaxWaterTrapped1 {
 	// method 2:
-	public int trapRainWater(int[] heights) {
+	public int trapRainWater(int[] height) {
 		// input sanity check
-		if (heights == null || heights.length <= 2) {
+		if (height == null || height.length <= 2) {
 			return 0;
 		}
 		// DP
 		// preprocessing
-		int[] left = new int[heights.length];
-		left[0] = heights[0];
-		for (int i = 1; i < heights.length; ++i) {
-			left[i] = Math.max(left[i - 1], heights[i - 1]);
+		// 1. 状态定义： left[i] 表示 height[i] 左边的 (不包括 height[i]) 最大的柱高
+		// 2. base condition: left[0] = 0
+		// 3. induction rule: left[i] = max(left[i - 1], height[i - 1])
+		int[] left = new int[height.length];
+		left[0] = 0;
+		for (int i = 1; i < height.length; ++i) {
+			left[i] = Math.max(left[i - 1], height[i - 1]);
 		}
-		int[] right = new int[heights.length];
-		right[heights.length - 1] = heights[heights.length - 1];
-		for (int i = heights.length - 2; i >= 0; --i) {
-			right[i] = Math.max(right[i + 1], heights[i + 1]);
+		int[] right = new int[height.length];
+		// 1. 状态定义： right[i] 表示 height[i] 右边的（不包括 height[i]) 最大的柱高
+		// 2. base condition: right[height.length - 1] = 0
+		// 3. induction rule: right[i] = max(right[i + 1], height[i + 1])
+		right[height.length - 1] = 0;
+		for (int i = height.length - 2; i >= 0; --i) {
+			right[i] = Math.max(right[i + 1], height[i + 1]);
 		}
+
+		// return:
+		//  SUM{ Math.min(left[i], right[i]) - height[i], if height[i] is shorter, otherwise 0}
 		int water = 0;
-		for (int i = 1; i < heights.length - 1; ++i) {
+		for (int i = 1; i < height.length - 1; ++i) {
 			int minHeight = Math.min(left[i], right[i]);
-			if (minHeight > heights[i]) {
-				water += minHeight - heights[i];
+			if (minHeight > height[i]) {
+				water += minHeight - height[i];
 			}
 		}
 		return water;

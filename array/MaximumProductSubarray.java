@@ -7,12 +7,12 @@
  *
  * Idea:
  * [ DP ]
- * 1. curMax[i], 表示以 nums[i] 结尾的所有的 subarray 中，subarray product 的最小值
- *    curMin[i], 表示以 nums[i] 结尾的所有的 subarray 中，subarray product 的最大值
+ * 1. curMax[i], 表示以 nums[i] 结尾的所有的 subarray 中，subarray product 的最大值
+ *    curMin[i], 表示以 nums[i] 结尾的所有的 subarray 中，subarray product 的最小值
  * 2. base case initialization
  *    curMax[0] = nums[0];
  *    curMin[0] = nums[0];
- * 3. induction rule: 
+ * 3. induction rule:
  *    for i: 1 -> n-1
  *    product1 = nums[i] * curMax[i - 1]
  *    product2 = nums[i] * curMin[i - 1]

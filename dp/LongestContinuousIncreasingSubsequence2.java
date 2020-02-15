@@ -1,7 +1,9 @@
 /**
  * Problem statement:
- * Give you an integer matrix (with row size n, column size m)，find the longest increasing continuous subsequence in this matrix.
- * The definition of the longest increasing continuous subsequence here can start at any row or column and go up/down/right/left any direction
+ * Give you an integer matrix (with row size n, column size m)，
+ * find the longest increasing continuous subsequence in this matrix.
+ * The definition of the longest increasing continuous subsequence here
+ * can start at any row or column and go up/down/right/left any direction
  *
  * Idea:
  * 记忆化搜索。本质是 DFS + 子状态记忆
@@ -46,9 +48,11 @@ public class LongestContinuousIncreasingSubsequence2 {
 				continue;
 			}
 			// now matrix[x][y] < matrix[i][j]
-			if (!visited[x][y]) {
-				longestIncreasingContinuousSubsequenceIIHelper(matrix, m, n, x, y, dp, visited);
+			if (visited[x][y]) {
+				dp[i][j] = Math.max(dp[i][j], dp[x][y] + 1);
+				continue;
 			}
+			longestIncreasingContinuousSubsequenceIIHelper(matrix, m, n, x, y, dp, visited);
 			dp[i][j] = Math.max(dp[i][j], dp[x][y] + 1);
 		}
 	}

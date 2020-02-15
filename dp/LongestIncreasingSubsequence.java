@@ -2,6 +2,11 @@
  * Problem statement:
  * Given an unsorted array of integers, find the length of longest increasing subsequence.
  *
+ * DP:
+ * 1. 状态定义：dp[i], 结尾于 nums[i] 的 LIS 的长度
+ * 2. base case：dp[i] = 1
+ * 3. induction rule: dp[i] = MAX{1 + (nums[j] < nums[i] ? dp[j] : 0)}
+ * 4. return: MAX{ dp[i] }
  */
 
 public class LongestIncreasingSubsequence {

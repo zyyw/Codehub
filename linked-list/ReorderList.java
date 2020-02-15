@@ -25,7 +25,7 @@ Given 1->2->3->4->5, reorder it to 1->5->2->4->3.
 
 public class ReorderList {
 	public void reorderList(ListNode head) {
-		if (head == null || head.next == null || head.next.next == null) {
+		if (head == null || head.next == null) {
 			return;
 		}
 

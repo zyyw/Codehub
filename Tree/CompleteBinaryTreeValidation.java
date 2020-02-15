@@ -18,18 +18,18 @@ public class CompleteBinaryTreeValidation {
 		while (!queue.isEmpty()) {
 			cur = queue.poll();
 			if (cur.left != null) {
-				queue.offer(cur.left);
 				if (hasNullChild) {
 					return false;
 				}
+				queue.offer(cur.left);
 			} else {
 				hasNullChild = true;
 			}
 			if (cur.right != null) {
-				queue.offer(cur.right);
 				if (hasNullChild) {
 					return false;
 				}
+				queue.offer(cur.right);
 			} else {
 				hasNullChild = true;
 			}

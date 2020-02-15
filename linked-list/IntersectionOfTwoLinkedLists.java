@@ -19,7 +19,7 @@ public class IntersectionOfTwoLinkedLists {
       headA = headA.next;
     }
     while (headB != null) {
-      if (set.contains(headB) == true) {
+      if (set.contains(headB)) {
         return headB;
       }
       headB = headB.next;

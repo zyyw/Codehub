@@ -1,6 +1,7 @@
 /**
  * Problem statement:
- * Given a binary tree and a sum, determine if the tree has a root-2-leaf path, such that adding up all the values along the path
+ * Given a binary tree and a sum, determine if the tree has a root-2-leaf path,
+ * such that adding up all the values along the path
  * equals the given sum.
  *
  * Idea:
@@ -28,7 +29,7 @@ public class PathSumToTarget1 {
 		return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
 	}
 
-	// 似乎上面的 code 可以优化成下面的
+	// 上面的 code 可以优化成下面的
 	public boolean hasPathSum2(TreeNode root, int sum) {
 		if (root == null) {
 			return false;
@@ -41,8 +42,7 @@ public class PathSumToTarget1 {
 		return hasPathSum2(root.left, sum - root.val) || hasPathSum2(root.right, sum - root.val);
 		// 如果是 k-nary tree
 		// for (TreeNodeKary child : root.children) {
-		//   boolean exist = hasPathSum2(child, sum - root.val);
-		// 	 if (exist) {
+		// 	 if (hasPathSum2(child, sum - root.val)) {
 		//   	 return true;
 		//   }
 		// }

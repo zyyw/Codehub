@@ -1,6 +1,7 @@
 /**
  * Problem statement:
- * Given an subarray of integer and an integer k, you need to find the total number of continuous subarrays whose sum equals k.
+ * Given an subarray of integer and an integer k, you need to find the
+ * total number of continuous subarrays whose sum equals k.
  *
  * For example:
  * [1, 1, 1], k = 2
@@ -16,7 +17,8 @@
  *   key: prefixSum[i]
  *   value: prefixSum[i] 出现的次数
  *   需要统计的是：每次 prefixSum[i] - k 出现的次数，并累加
- *   物理意义：在 nums[i] 之前有多少个 prefixSum[i] - k 个记录，which mean 从 nums[i] 向前可以找到这么多个 subarray 满足 subarray sum equals k
+ *   物理意义：在 nums[i] 之前有多少个 prefixSum[i] - k 个记录，
+ *   which mean 从 nums[i] 向前可以找到这么多个 subarray 满足 subarray sum equals k
  */
 
 public class SubarraySumToTarget2 {

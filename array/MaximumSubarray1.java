@@ -1,6 +1,7 @@
 /**
  * Problem statement:
- * Find the contiguous subarray within an array (containing at least one element) which has the largest sum.
+ * Find the contiguous subarray within an array (containing at least one element)
+ * which has the largest sum.
  *
  * Assumption:
  * The given array is not null nor empty
@@ -30,5 +31,5 @@ public class MaximumSubarray1 {
 			ret = Math.max(ret, sum);
 		}
 		return ret;
-	}	
+	}
 }

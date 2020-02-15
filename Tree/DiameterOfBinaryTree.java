@@ -1,7 +1,8 @@
 /**
  * Problem statement:
  * Given a binary tree, you need to find the length of the diameter of the tree.
- * The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
+ * The diameter of a binary tree is the length of the longest path between any
+ * two nodes in a tree. This path may or may not pass through the root.
  * [ LC-543 ]
  *
  * Follow-up:
@@ -26,7 +27,10 @@ public class DiameterOfBinaryTree {
 		}
 		int retLeft = diameterOfBinaryTreeHelper(root.left, ret);
 		int retRight = diameterOfBinaryTreeHelper(root.right, ret);
+
+		// ret[0] = Math.max(ret[0], retLeft + 1 + retRight + 1 - 2);
 		ret[0] = Math.max(ret[0], retLeft + retRight);
+
 		return 1 + Math.max(retLeft, retRight);
 	}
 }

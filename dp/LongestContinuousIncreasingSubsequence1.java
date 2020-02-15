@@ -5,6 +5,12 @@
  * Can be from right to left or from left to right.
  * Indices of the integers in the subsequence should be continuous.
  *
+ * DP:
+ * 1. 状态定义：dp[i], 结尾于 nums[i] 的 LCIS 的长度
+ * 2. base case: dp[0] = 1
+ * 3. induction rule: dp[i] = 1 + (nums[i - 1] < nums[i] ? dp[i - 1] : 0)
+ * 4. return: MAX{ dp[i] }
+ *
  */
 
 public class LongestContinuousIncreasingSubsequence1 {

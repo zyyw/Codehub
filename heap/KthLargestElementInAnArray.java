@@ -15,6 +15,7 @@ You may assume k is always valid, 1 ≤ k ≤ array's length.
 */
 
 public class KthLargestElementInAnArray {
+  // 方法一：minHeap
   public int findKthLargest(int[] nums, int k) {
     // input sanity check
     // skip... assuming all inputs are valid
