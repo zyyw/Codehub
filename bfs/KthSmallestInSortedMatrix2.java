@@ -12,11 +12,6 @@ public class KthSmallestInSortedMatrix2 {
 		int x;
 		int y;
 		int val;
-		Cell(int x, int y, int val) {
-			this.x = x;
-			this.y = y;
-			this.val = val;
-		}
 	}
 
 	public int kthSmallest(int[][] matrix, int k) {
@@ -36,9 +31,8 @@ public class KthSmallestInSortedMatrix2 {
 		visited[0][0] = true;
 		int[] dx = {1, 0};
 		int[] dy = {0, 1};
-		Cell cur = null;
 		while (--k > 0) {
-			cur = pq.poll();
+			Cell cur = pq.poll();
 			for (int i = 0; i < 2; ++i) {
 				int x2 = cur.x + dx[i];
 				int y2 = cur.y + dy[i];
