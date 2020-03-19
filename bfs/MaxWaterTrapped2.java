@@ -20,7 +20,7 @@
  */
 
 public class MaxWaterTrapped2 {
-	static class Cell implements Comparable<Cell> {
+	static class Cell {
 		int x;
 		int y;
 		int val;

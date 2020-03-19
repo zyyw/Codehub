@@ -7,8 +7,8 @@
  *     |
  *     |
  *     |
- *     |					           __
- *     |		 		 __			    |  |__    __
+ *     |                     __
+ *     |         __         |  |__    __
  *     |   __   |  |__	  __|  |  |__|  |__
  *     |__|__|__|__|__|__|__|__|__|__|__|__|________>
  *      0  1  0  2  1  0  1  3  2  1  2  1
@@ -48,10 +48,11 @@ public class MaxWaterTrapped1 {
 		for (int i = 1; i < height.length; ++i) {
 			left[i] = Math.max(left[i - 1], height[i - 1]);
 		}
-		int[] right = new int[height.length];
+
 		// 1. 状态定义： right[i] 表示 height[i] 右边的（不包括 height[i]) 最大的柱高
 		// 2. base condition: right[height.length - 1] = 0
 		// 3. induction rule: right[i] = max(right[i + 1], height[i + 1])
+		int[] right = new int[height.length];
 		right[height.length - 1] = 0;
 		for (int i = height.length - 2; i >= 0; --i) {
 			right[i] = Math.max(right[i + 1], height[i + 1]);

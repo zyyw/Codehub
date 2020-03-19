@@ -24,13 +24,13 @@ Output: 0
 Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
 思路：
-1. 状态定义：left[i], 是 prices[i] 左边(不包括 prices[i]) 最多交易一次的最大获利。
-           leftMinPrice 是prices[i] 左边(不包括 prices[i])的价格最低位。
+1. 状态定义：left[i], 是 prices[i] 左边(包括 prices[i]) 最多交易一次的最大获利。
+           leftMinPrice 是prices[i] 左边(包括 prices[i])的价格最低位。
 2. base condition: left[0] = 0, leftMinPrice = prices[0]
 3. induction rule: left[i] = max(left[i - 1], prices[i] - leftMinPrice)
                     leftMinPrice = min(leftMinPrice, prices[i])
 
-1. 状态定义：right[i], 是 prices[i] 右边(不包括 prices[i]) 最多交易一次的最大获利。
+1. 状态定义：right[i], 是 prices[i] 右边(包括 prices[i]) 最多交易一次的最大获利。
            rightMaxPrice 是 prices[i] 右边(不包括 prices[i])的价格最高位。
 2. base condition: right[0] = 0, rightMaxPrice = prices[n - 1]
 3. induction rule: right[i] = max(right[i + 1], rightMaxPrice - prices[i])

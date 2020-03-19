@@ -12,25 +12,8 @@
  */
 
 public class PathSumToTarget1 {
-	public boolean hasPathSum(TreeNode root, int sum) {
-		if (root == null) {
-			return false;
-		} else if (root.left == null && root.right == null) {
-			// leaf node
-			return root.val == sum;
-		} else if (root.left == null) {
-			// root.right != null;
-			return hasPathSum(root.right, sum - root.val);
-		} else if (root.right == null) {
-			// root.left != null
-			return hasPathSum(root.left, sum - root.val);
-		}
-		// now root has both left child and right child
-		return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
-	}
-
 	// 上面的 code 可以优化成下面的
-	public boolean hasPathSum2(TreeNode root, int sum) {
+	public boolean hasPathSum(TreeNode root, int sum) {
 		if (root == null) {
 			return false;
 		}
