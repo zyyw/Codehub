@@ -16,8 +16,31 @@ public class ReverseWordsInSentence2 {
 		if (input == null || input.length() == 0) {
 			return input;
 		}
+
+		// step 1: trim spaces
+		char[] array = trimSpace(input).toCharArray();
+		// now array is the valid space-less sentence
+		// step2: reverse it word by word
+		reverse(array, 0, array.length - 1);
+		int start = 0;
+		int end = 0;
+		while (end < array.length) {
+			while (end < array.length && !Character.isWhitespace(array[end])) {
+				++end;
+			}
+			// word[start:end - 1]
+			reverse(array, start, end - 1);
+			++end; // since space-less, incrementing end will let array[end] be a non-space char, 1st char of the next word
+			start = end; // reset start
+		}
+		return new String(array);
+	}
+
+	/*
+	remove leading and tailing space, as well as duplicated spaces between words
+	*/
+	private String trimSpace(String input) {
 		char[] array = input.toCharArray();
-		// step1: remove spaces
 		int left = 0;
 		int right = 0;
 		int wordCount = 0;
@@ -37,20 +60,6 @@ public class ReverseWordsInSentence2 {
 				array[left++] = array[right++];
 			}
 			++wordCount;
-		}
-		// now array[0:left - 1] is the valid space-less sentence
-		// step2: reverse it word by word
-		reverse(array, 0, left - 1);
-		int start = 0;
-		int end = 0;
-		while (end < left) {
-			while (end < left && !Character.isWhitespace(array[end])) {
-				++end;
-			}
-			// word[start:end - 1]
-			reverse(array, start, end - 1);
-			++end; // since space-less, incrementing end will let array[end] be a non-space char, 1st char of the next word
-			start = end; // reset start
 		}
 		return new String(array, 0, left);
 	}
