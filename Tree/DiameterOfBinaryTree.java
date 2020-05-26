@@ -14,19 +14,21 @@
 public class DiameterOfBinaryTree {
 	public int diameterOfBinaryTree(TreeNode root) {
 		int[] ret = {0};
-		diameterOfBinaryTreeHelper(root, ret);
+		height(root, ret);
 		return ret[0];
 	}
 
 	/**
-	 * return the longest depth from root to a leaf node
+	   @root: 当前子树的根节点
+	   @ret: 所有搜索过的子树的 diameter
+		 返回值：当前子树的树高
 	 */
-	private int diameterOfBinaryTreeHelper(TreeNode root, int[] ret) {
+	private int height(TreeNode root, int[] ret) {
 		if (root == null) {
 			return 0;
 		}
-		int retLeft = diameterOfBinaryTreeHelper(root.left, ret);
-		int retRight = diameterOfBinaryTreeHelper(root.right, ret);
+		int retLeft = height(root.left, ret);
+		int retRight = height(root.right, ret);
 
 		// ret[0] = Math.max(ret[0], retLeft + 1 + retRight + 1 - 2);
 		ret[0] = Math.max(ret[0], retLeft + retRight);

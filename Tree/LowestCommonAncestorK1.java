@@ -1,39 +1,28 @@
 /**
  * Problem statement:
- * 给定一棵 k 叉树，和 树中两个节点。求这两个节点的最小公共祖先
+ * Given k nodes in a binary tree, find their lowest common ancestor.
+ *
  * Assumption:
- * 1. 这两个节点一定在树里
- * 2. 树没有 parent 指针
- *
- * TreeNodeKary {
- *   int val;
- *   List<TreeNodeKary> children;
- *   TreeNodeKary(int v) {
- *     this.val = v;
- *     child = new ArrayList<>();
- *   }
- * }
- *
+ * 1. k >= 2
+ * 2. there is no parent pointer
+ * 3. the given k nodes are guaranteed in the binary tree
  */
 
-public class LowestCommonAncestorK1 {
-	public TreeNodeKary lowestCommonAncestor(TreeNodeKary root, TreeNodeKary one, TreeNodeKary two) {
-		if (root == null || root == one || root == two) {
+public class LowestCommonAncestor4 {
+	public TreeNode lowestCommonAncestor(TreeNode root, List<TreeNode> nodes) {
+		Set<TreeNode> set = new HashSet<>(nodes);
+		return lowestCommonAncestorHelper(root, set);
+	}
+
+	private TreeNode lowestCommonAncestorHelper(TreeNode root, Set<TreeNode> set) {
+		if (root == null || set.contains(root)) {
 			return root;
 		}
-		int cnt = 0;
-		TreeNodeKary ret = null;
-		TreeNodeKary cur = null;
-		for(TreeNodeKary child : root.children) {
-			cur = lowestCommonAncestor(child, one, two);
-			if (cur != null) {
-				++cnt;
-				ret = cur;
-			}
-			if (cnt == 2) {
-				return root;
-			}
+		TreeNode retLeft = lowestCommonAncestorHelper(root.left, set);
+		TreeNode retRight = lowestCommonAncestorHelper(root.right, set);
+		if (retLeft != null && retRight != null) {
+			return root;
 		}
-		return ret;
+		return retLeft != null ? retLeft : retRight;
 	}
 }

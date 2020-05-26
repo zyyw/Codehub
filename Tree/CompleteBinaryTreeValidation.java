@@ -3,7 +3,8 @@
  * validate if a binary tree is a complete binary tree or not
  *
  * Idea:
- * if a node doesn't not have child node, any subsequent node (level order traversal) can NOT have child either since then.
+ * if a node doesn't not have child node, any subsequent node
+ * (level order traversal) can NOT have child either since then.
  */
 
 public class CompleteBinaryTreeValidation {

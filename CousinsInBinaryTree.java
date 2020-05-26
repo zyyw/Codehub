@@ -37,14 +37,17 @@ public class CousinsInBinaryTree(TreeNode root) {
 					}
 				}
 				if (cnt == 2) {
-					// if preCnt == 0, two nodes share the same parent, otherwise they have different parent
+					// if preCnt == 0, two nodes share the same parent,
+					// otherwise they have different parent
 					return preCnt != 0;
 				}
 			}
 			if (cnt == 1) {
-				return false; // one node at a level, the other node must be in the another level
+				// one node at a level, the other node must be in the another level
+				return false;
 			}
 		}
-		return false; // one or two nodes are not in the binary tree
+		// one or two nodes are not in the binary tree
+		return false;
 	}
 }

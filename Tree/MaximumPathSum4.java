@@ -4,6 +4,10 @@
  * The path may start at any node along the root-2-leaf path.
  * 讲人话：在所有直上直下的 path 中，找到一条(起始点不限，终点在 leaf node) 的 path 使得 path sum 最大。
  *
+ * 翻译题意，说人话：
+ * any-2-leaf
+ * max path sum
+ *
  * Assumption:
  * root node is not null
  *

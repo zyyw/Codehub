@@ -1,6 +1,7 @@
 /**
  * Problem statement:
- * Get the list of keys in a given binary search tree in a given range [min, max] in ascending order, both min and max are inclusive.
+ * Get the list of keys in a given binary search tree in a given
+ * range [min, max] in ascending order, both min and max are inclusive.
  *
  * In ascending order ==> 中序遍历
  *

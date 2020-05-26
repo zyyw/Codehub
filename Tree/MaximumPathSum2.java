@@ -14,6 +14,13 @@
  *        3                           -3
  * ret = 2 + 3                ret = 2
  *
+ * 翻译题目，说人话：
+ * any-2-any
+ * max path sum
+ *
+ * 备注：
+ * 1. 这题需要和 MaximumPathSum5 进行区分和比较
+ *
  * 1. 希望从子树中获得什么信息：
  *    子树的 maximum root-2-any path sum
  * 2. 需要在当下层做些什么
