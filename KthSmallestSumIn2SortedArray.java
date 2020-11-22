@@ -7,10 +7,18 @@
  * Assumption:
  * 1. A is not null and A is not of zero length, so as B;
  * 2. K > 0 and K <= m * n
+
+      [1,      3,     5] +
+[
+ 2:  2+1=3, 2+3=5, 2+5=7
+ 4:  4+1=5, 4+3=7, 4+5=9
+ 6:  6+1=7, 6+3=9, 6+5=11
+]
+
  */
 
 public class KthSmallestSumIn2SortedArray {
-	static class Cell implements Comparable<Cell> {
+	static class Cell {
 		int x;
 		int y;
 		int val;
@@ -19,17 +27,17 @@ public class KthSmallestSumIn2SortedArray {
 			this.y = y;
 			this.val = v;
 		}
-		@Override
-		public int compareTo(Cell c) {
-			return this.val < c.val ? -1 : 1
-		}
 	}
 	public int kthSum(int[] a, int[] b, int k) {
 		// input sanity check
 		if (a == null || a.length == 0 || b == null || b.length == 0 || k <= 0) {
 			return Integer.MIN_VALUE;
 		}
-		Queue<Cell> pq = new PriorityQueue<>();
+		Queue<Cell> pq = new PriorityQueue<>(k, new Comparator<Cell>(){
+			public int compare(Cell c1, Cell c2) {
+				return c1.val < c2.val ? -1 : 1;
+			}
+		});
 		pq.offer(new Cell(0, 0, a[0] + b[0]));
 		boolean[][] visited = new int[a.length][b.length];
 		visited[0][0] = true;

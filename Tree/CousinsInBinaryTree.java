@@ -17,13 +17,11 @@ public class CousinsInBinaryTree(TreeNode root) {
 		Queue<TreeNode> queue = new ArrayDeque<>();
 		queue.offer(root);
 		while (!queue.isEmpty()) {
-			int preCnt = 0;
 			int cnt = 0;
 			int sz = queue.size();
-			TreeNode cur = null;
 			for (int i = 0; i < sz; ++i) {
-				cur = queue.poll();
-				preCnt = cnt;
+				TreeNode cur = queue.poll();
+				int preCnt = cnt;
 				if (cur.left != null) {
 					queue.offer(cur.left);
 					if (cur.left.key == a || cur.left.key == b) {

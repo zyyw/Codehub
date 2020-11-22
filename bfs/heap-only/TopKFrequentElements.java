@@ -50,9 +50,11 @@ public class TopKFrequentElements {
     for (Map.Entry<Integer, Integer> entry : hashMap.entrySet()) {
       if (minHeap.size() < k) {
         minHeap.offer(new Pair(entry.getKey(), entry.getValue()));
-      } else if (entry.getValue() > minHeap.peek().freq) {
-        minHeap.poll();
-        minHeap.offer(new Pair(entry.getKey(), entry.getValue()));
+      } else{
+        if (entry.getValue() > minHeap.peek().freq) {
+          minHeap.poll();
+          minHeap.offer(new Pair(entry.getKey(), entry.getValue()));
+        }
       }
     }
 

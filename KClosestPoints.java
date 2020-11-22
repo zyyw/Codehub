@@ -1,26 +1,27 @@
 /**
  *
+ * 如果是找第 K 个最近的 Point: KthLargestElementInAnArray
+    maxHeap,
+    for (Point point: points) {
+      distance = computeDistance(point.x, point.y)
+      if (maxHeap.size() < k) {
+        maxHeap.offer(new Cell(point, distance))
+      } else {
+        if (distance < maxHeap.peek()) {
+          maxHeap.poll();
+          maxHeap.offer(new Cell(point, distance))
+        }
+      }
+    }
+    return maxheap.peek().point
  */
 public class KClosestPoints {
-    class Cell implements Comparable<Cell> {
+    class Cell {
         Point point;
-        Point origin;
         long distance;
-        Cell(Point point, Point origin) {
+        Cell(Point point, long distance) {
             this.point = point;
-            this.origin = origin;
-            this.distance = computeDistance((long)point.x - (long)origin.x, 
-                                            (long)point.y - (long)origin.y);
-        }
-        @Override
-        public int compareTo(Cell cell) {
-            if (this.distance == cell.distance) {
-                if (this.point.x == cell.point.x) {
-                    return this.point.y <= cell.point.y ? 1 : -1;
-                }
-                return this.point.x < cell.point.x ? 1 : -1;
-            }
-            return this.distance < cell.distance ? 1 : -1;
+            this.distance = distance;
         }
     }
     public Point[] kClosest(Point[] points, Point origin, int k) {
@@ -29,14 +30,26 @@ public class KClosestPoints {
             return new Point[0];
         }
         k = Math.min(k, points.length);
-        Queue<Cell> maxHeap = new PriorityQueue<Cell>();
+        Queue<Cell> maxHeap = new PriorityQueue<Cell>(k, new Comparator<Cell>() {
+          public int compare(Cell c1, Cell c2) {
+            if (c1.distance == c2.distance) {
+              if (c1.point.x == c2.point.x) {
+                return c1.point.y < c2.point.y ? 1 : -1;
+              }
+              return c1.point.x < c2.point.x ? 1 : -1;
+            }
+            return c1.distance < c2.distance ? 1 : -1;
+          }
+        });
         for (int i = 0; i < k; ++i) {
-            maxHeap.offer(new Cell(points[i], origin));
+            int distance = computeDistance(points[i].x - origin.x, points[i].y - origin.y);
+            maxHeap.offer(new Cell(points[i], distance));
         }
         for (int i = k; i < points.length; ++i) {
-            if (computeDistance((long)points[i].x - (long)origin.x, (long)points[i].y - (long)origin.y) < maxHeap.peek().distance) {
+            int distance = computeDistance(points[i].x - origin.x, points[i].y - origin.y);
+            if (distance < maxHeap.peek().distance) {
                 maxHeap.poll();
-                maxHeap.offer(new Cell(points[i], origin));
+                maxHeap.offer(new Cell(points[i], distance));
             }
         }
         Point[] ret = new Point[k];
@@ -47,9 +60,9 @@ public class KClosestPoints {
         }
         return ret;
     }
-    
-    private long computeDistance(long x, long y) {
-        return x * x + y * y;
-        // return (long)(x) * (long)(x) + (long)(y) * (long)(y); 
+
+    private long computeDistance(int x, int y) {
+        // return x * x + y * y;
+        return (long)(x) * (long)(x) + (long)(y) * (long)(y);
     }
 }

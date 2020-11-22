@@ -1,7 +1,9 @@
 /**
  * Problem statement:
- * Given an array of non-negative integers, you are initially positioned at an arbitrary index of the array.
- * A[i] means the maximum jump distance from that position (you can either jump left or jump right)
+ * Given an array of non-negative integers, you are initially positioned at an
+ * arbitrary index of the array.
+ * A[i] means the maximum jump distance from that position (you can either
+ * jump left or jump right)
  * Determin the minimum jumps you need to reach the right end of the array.
  * Return -1 if you can not reach the right end of the array.
  *
