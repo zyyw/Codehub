@@ -12,20 +12,23 @@ class Solution {
 			return head;
 		}
 
-		// get prev node
+		// find the part to be rotated
 		ListNode dummy = new ListNode(0);
 		dummy.next = head;
 		while (k > 1) {
+			// 保证 (dummy, head] 之间有K个node，并且这K个node是需要rotate到list前面去的
 			head = head.next;
 			k = k - 1;
 		}
+		// [dummy.next, head] 是rotate 区间
 		ListNode prev = dummy;
 		while (head.next != null) {
 			head = head.next;
 			prev = prev.next;
 		}
-		
-		// reassign next pointer
+
+		// [prev.next, head] 是需要rotate的节点
+		// do the rotation by reassign pointers
 		head.next = dummy.next;
 		dummy.next = prev.next;
 		prev.next = null;
