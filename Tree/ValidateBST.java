@@ -42,7 +42,7 @@ public class ValidateBST {
 	public boolean isValidBST2(TreeNode root) {
 		TreeNode prev = null;
 		Deque<TreeNode> stk = ArrayDeque<>();
-		while (root != null || stk.isEmpty()) {
+		while (root != null || !stk.isEmpty()) {
 			if (root != null) {
 				stk.offerFirst(root);
 				root = root.left;
