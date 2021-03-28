@@ -22,7 +22,7 @@ public class PathSumToTarget1 {
 			return root.val == sum;
 		}
 		// go to each child node
-		return hasPathSum2(root.left, sum - root.val) || hasPathSum2(root.right, sum - root.val);
+		return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
 		// 如果是 k-nary tree
 		// for (TreeNodeKary child : root.children) {
 		// 	 if (hasPathSum2(child, sum - root.val)) {

@@ -17,6 +17,8 @@ for target = 6, return
   [2, 4],
   [1, 3, 2]
 ]
+
+similiar to: LC 437
 */
 
 public class PathSumToTarget4 {
